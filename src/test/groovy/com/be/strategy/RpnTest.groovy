@@ -1,12 +1,18 @@
 package com.be.strategy
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
+@ContextConfiguration(classes = SpringConfiguration.class)
 class RpnTest extends Specification {
+
+    @Autowired
+    private Rpn rpn
 
     def "should calculate rpn"() {
         when:
-        def actual = new Rpn().calculate(expression)
+        def actual = rpn.calculate(expression)
 
         then:
         actual == result
