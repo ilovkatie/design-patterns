@@ -1,26 +1,26 @@
 package com.be.strategy.pattern;
 
 import com.be.strategy.pattern.operation.ArithmeticOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
 public class RpnStrategy {
 
-    @Resource
-    private List<ArithmeticOperation> arithmeticOperations;
+
+    @Autowired
+    private ApplicationContext applicationContext;
+
     private Map<String, ArithmeticOperation> operations;
 
     @PostConstruct
     public void init() {
-        operations = new HashMap<>();
-        arithmeticOperations.forEach(o -> operations.put(o.getKey(), o));
+        operations = applicationContext.getBeansOfType(ArithmeticOperation.class);
     }
 
     public String calculate(String firstToken, String secondToken, String operation) {

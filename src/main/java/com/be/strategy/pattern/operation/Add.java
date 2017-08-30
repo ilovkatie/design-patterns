@@ -1,10 +1,11 @@
 package com.be.strategy.pattern.operation;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-@Component
+@Component("+")
 public class Add implements ArithmeticOperation {
 
     @Override
