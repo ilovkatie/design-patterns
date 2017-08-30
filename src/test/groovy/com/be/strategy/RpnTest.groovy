@@ -1,11 +1,10 @@
 package com.be.strategy
 
-import com.be.strategy.not.pattern.Rpn
 import spock.lang.Specification
 
 class RpnTest extends Specification {
 
-    def "shouldCalculateRpn"() {
+    def "should calculate rpn"() {
         when:
         def actual = new Rpn().calculate(expression)
 
